@@ -23,7 +23,7 @@
   
    <!-- Font Awesome -->
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
+  
   <!-- Select2 -->
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -167,12 +167,16 @@
           <nav aria-label="breadcrumb">
             
               <h3 class="mx-3 p-0 my-0" style="text-transform: capitalize;">
-                <i class="fa fa-home"></i>
+                <i class="fa fa-angle-double-right"></i>
                   <?php 
-                    if(isset($_GET['pages'])){
+                    if(isset($_GET['pages']) && !(isset($_GET['aksi']))){
                       echo str_replace('_',' ',$pages);
 
-                    }else {
+                    }else if(isset($_GET['aksi'])){
+                      echo str_replace('_',' ',$aksi);
+                    }
+                    
+                    else {
                       echo 'Home';
                     }
                    ?>
@@ -194,6 +198,14 @@
                         echo str_replace('_',' ', $pages);
                       ?>
                     </a></li>
+
+                    <?php if(isset($aksi)){?>
+                    <li class="breadcrumb-item" style="text-transform: capitalize;"><a href="index.php?pages=<?php echo $pages?>&aksi=<?php echo $aksi?>">
+                    <?php
+                        echo str_replace('_',' ', $aksi);
+                      ?>
+                    </a></li>
+                    <?php }?>
                   <?php
                   }
                 }else {
@@ -214,17 +226,19 @@
          
           if($pages == 'home') {
             if($aksi == ''){
-              include('home.php');
+              include('pages/home.php');
             }
           }else if($pages == 'data_pegawai'){
             if($aksi == ''){
-              include('dataPegawai.php');
+              include('pages/dataPegawai.php');
+            }else if($aksi == 'tambah_data_pegawai') {
+              include('pages/tambahPegawai.php');
             }
           }
           
           
           else {
-            include('home.php');
+            include('pages/home.php');
           }
         ?>
         

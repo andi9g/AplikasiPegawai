@@ -49,8 +49,27 @@
     background: #E3EAEC;
 }
 
+.twochar {
+    width: 2em;
+}
+
 .borderPegawai {
     border-collapse: collapse;
+}
+
+.formku {
+    border-radius: 7px;
+    border:2px solid #c5c3c365;
+    background-color:  rgb(248, 252, 255);
+}
+
+.inputku {
+    width: 100% !important;
+}
+
+.inputDateKu {
+    width: 100%;
+    padding: 7px 0px;
 }
 
 .borderPegawai tr th {
